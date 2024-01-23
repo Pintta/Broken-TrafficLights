@@ -21,7 +21,7 @@ RegisterNetEvent('qb-NaturalTrafficLights:c:setLight', function(coords)
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     local lastTrafficLight = 0
     while true do
         Citizen.Wait(math.random(1000, 2500))
