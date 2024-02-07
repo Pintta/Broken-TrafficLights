@@ -1,4 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+local RealReacting = math.random(3500, 5000)
+local CheckingTime = math.random(1000, 2500)
 
 RegisterNetEvent('qb-NaturalTrafficLights:c:setLight', function(coords)
     local Liikennevalot = {
@@ -14,7 +16,7 @@ RegisterNetEvent('qb-NaturalTrafficLights:c:setLight', function(coords)
         trafficLight = GetClosestObjectOfType(coords, 1.0, Liikennevalo, false, false, false)
         if trafficLight ~= 0 then
             SetEntityTrafficlightOverride(trafficLight, 0)
-            Wait(math.random(3500, 5000))
+            Wait(RealReacting)
             SetEntityTrafficlightOverride(trafficLight, -1)
             break
         end
@@ -29,7 +31,7 @@ end
 CreateThread(function()
     local lastTrafficLight = 0
     while true do
-        Wait(math.random(1000, 2500))
+        Wait(CheckingTime)
         local player = GetPlayerPed(-1)
         if IsPedInAnyVehicle(player) and IsVehicleStopped(GetVehiclePedIsIn(player)) then
             local playerPosition = GetEntityCoords(player)
@@ -66,7 +68,7 @@ CreateThread(function()
                 QBCore.Functions.TriggerCallback('qb-NaturalTrafficLights:s:setLight', GetEntityCoords(trafficLight, false), function(result)
                 end)
                 lastTrafficLight = trafficLight
-                Wait(math.random(3500, 5000))
+                Wait(RealReacting)
             end
         end
     end
