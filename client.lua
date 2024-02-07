@@ -25,7 +25,7 @@ end)
 
 local function translateVector3(pos, angle, distance)
     local angleRad = angle * 2.0 * math.pi / 360.0
-    return vector3(pos.x - distance*math.sin(angleRad), pos.y + distance*math.cos(angleRad), pos.z)
+    return vector3(pos.x - distance * math.sin(angleRad), pos.y + distance * math.cos(angleRad), pos.z)
 end
 
 CreateThread(function()
