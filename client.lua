@@ -14,12 +14,17 @@ RegisterNetEvent('qb-NaturalTrafficLights:c:setLight', function(coords)
         trafficLight = GetClosestObjectOfType(coords, 1.0, Liikennevalo, false, false, false)
         if trafficLight ~= 0 then
             SetEntityTrafficlightOverride(trafficLight, 0)
-            Citizen.Wait(math.random(3500, 5000))
+            Wait(math.random(3500, 5000))
             SetEntityTrafficlightOverride(trafficLight, -1)
             break
         end
     end
 end)
+
+local function translateVector3(pos, angle, distance)
+    local angleRad = angle * 2.0 * math.pi / 360.0
+    return vector3(pos.x - distance*math.sin(angleRad), pos.y + distance*math.cos(angleRad), pos.z)
+end
 
 CreateThread(function()
     local lastTrafficLight = 0
@@ -61,27 +66,8 @@ CreateThread(function()
                 QBCore.Functions.TriggerCallback('qb-NaturalTrafficLights:s:setLight', GetEntityCoords(trafficLight, false), function(result)
                 end)
                 lastTrafficLight = trafficLight
-                Citizen.Wait(math.random(3500, 5000))
+                Wait(math.random(3500, 5000))
             end
         end
     end
 end)
-
-function translateVector3(pos, angle, distance)
-    local angleRad = angle * 2.0 * math.pi / 360.0
-    return vector3(pos.x - distance*math.sin(angleRad), pos.y + distance*math.cos(angleRad), pos.z)
-end
-
-function getNearbyVehicles()
-    local vehicles = {}
-    local findHandle, vehicle = FindFirstVehicle()
-    if findHandle then
-        local retval = true
-        while retval and vehicle ~= 0 do
-            table.insert(vehicles, vehicle)
-            retval, vehicle = FindNextVehicle()
-        end
-        EndFindVehicle(findHandle)
-    end
-    return vehicles
-end
