@@ -1,1 +1,1 @@
-#This is Natural Traffic Lights for QBCore Framework.
+## This is Natural Traffic Lights for QBCore Framework.
