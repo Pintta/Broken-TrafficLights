@@ -1,3 +1,3 @@
 ## This is Natural Traffic Lights
 
-Support: QBus, QBCore
+Support: ESX, QBus, QBCore
