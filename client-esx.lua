@@ -1,7 +1,7 @@
 local RealReacting = math.random(3500, 5000)
 local CheckingTime = math.random(1000, 2500)
 
-RegisterNetEvent('qb-NaturalTrafficLights:c:setLight', function(coords)
+RegisterNetEvent('Broken-TrafficLights:c:setLight', function(coords)
     local Liikennevalot = {
         [0] = 0x3e2b73a4,
         [1] = 0x336e5e2a,
@@ -64,7 +64,7 @@ CreateThread(function()
                 end
             end
             if (trafficLight ~= 0) and (trafficLight ~= lastTrafficLight) then
-                TriggerServerEvent('qb-NaturalTrafficLights:s:setLight', GetEntityCoords(trafficLight, false), function(result)
+                TriggerServerEvent('Broken-TrafficLights:s:setLight', GetEntityCoords(trafficLight, false), function(result)
                 end)
                 lastTrafficLight = trafficLight
                 Wait(RealReacting)
