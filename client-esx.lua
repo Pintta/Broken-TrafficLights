@@ -64,7 +64,7 @@ CreateThread(function()
                 end
             end
             if (trafficLight ~= 0) and (trafficLight ~= lastTrafficLight) then
-                RegisterServerEvent('qb-NaturalTrafficLights:s:setLight', GetEntityCoords(trafficLight, false), function(result)
+                TriggerServerEvent('qb-NaturalTrafficLights:s:setLight', GetEntityCoords(trafficLight, false), function(result)
                 end)
                 lastTrafficLight = trafficLight
                 Wait(RealReacting)
