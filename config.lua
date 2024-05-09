@@ -1,4 +1,4 @@
-Config = {
+switcher = {
   esx = false,
   qbcore = true,
 }
