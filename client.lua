@@ -1,4 +1,4 @@
-if Config.qbcore then
+if config.qbcore then
     local QBCore = exports['qb-core']:GetCoreObject()
     local RealReacting = math.random(3500, 5000)
     local CheckingTime = math.random(1000, 2500)
@@ -74,4 +74,6 @@ if Config.qbcore then
             end
         end
     end)
+else
+    return
 end
