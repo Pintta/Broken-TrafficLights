@@ -3,3 +3,5 @@
 Support: ESX, QBus, QBCore
 
 Working very nice with ESX/QBCORE
+
+Added config switcher.
